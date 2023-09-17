@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pixPage.dart';
+//import 'pixPage.dart';
 
 void main() {
   runApp(const MyApp());
