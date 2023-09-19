@@ -6,69 +6,99 @@ class pixPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: PixScreen(),
+    return MaterialApp(
+      home: pixScreen(),
     );
   }
 }
 
-class PixScreen extends StatefulWidget {
-  const PixScreen({super.key});
+// ignore: must_be_immutable, camel_case_types
+class pixScreen extends StatelessWidget {
+  pixScreen({super.key});
+  // Variável que alimenta o valor do CRC
+  int crcValue = 1440;
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _PixScreenState createState() => _PixScreenState();
-}
+  // Controlador para o input do CRC personalizado
+  final TextEditingController crcController = TextEditingController();
 
-class _PixScreenState extends State<PixScreen> {
-  String saldo = "00,00";
-  TextEditingController valorController = TextEditingController();
-
-  void confirmarPix() {
-    String valorDigitado = valorController.text;
-    // Aqui você pode adicionar a lógica para processar o Pix com o valorDigitado
-    // Por enquanto, apenas atualizaremos o saldo com o valor digitado
-    setState(() {
-      saldo = valorDigitado;
-    });
+  // Função para adicionar ação ao botão "Enviar"
+  void enviarAcao() {
+    // Adicione a ação que deseja executar aqui
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      appBar: AppBar(
+        title: const Align(
+          alignment: Alignment.centerLeft,
+          child: Text("YourTime"),
+        ),
+      ),
+      body: Container(
+        color: Colors.transparent, // Remove a cor de fundo
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Seu saldo: $saldo",
-              style: const TextStyle(fontSize: 24),
-            ),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             const SizedBox(height: 20),
-            SizedBox(
-              width: 300.0,
-              child: TextField(
-                controller: valorController,
-                keyboardType: const TextInputType.numberWithOptions(),
-                decoration: const InputDecoration(labelText: "Digite o valor"),
+            const Padding(
+              padding: EdgeInsets.only(left: 20),
+              child: Text(
+                "CRC",
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text(
+                crcValue.toString(), // Valor do CRC
+                style: const TextStyle(fontSize: 36),
               ),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              width: 300.0,
-              child: ElevatedButton(
-                onPressed: (){},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.yellow,
+            Center(
+              child: Container(
+                color: Colors.orangeAccent,
+                width: 500,
+                alignment: Alignment.center, // Alinha o contender ao centro
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "CRC",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    TextField(
+                      controller: crcController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        hintText: "Digite um valor",
+                      ),
+                    ),
+                  ],
                 ),
-                child: const Text("Confirmar Pix"),
               ),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: Container(
+        color: Colors.grey, // Cor de fundo cinza
+        child: ElevatedButton(
+          onPressed: enviarAcao, // Chama a função enviarAcao quando o botão é pressionado
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.orange, // Define a cor laranja para o botão
+          ),
+          child: const Text("Enviar"),
+        ),
+      ),
     );
   }
+
+  // @override
+  // void dispose() {
+  //   crcController.dispose(); // Libera o controlador do TextField ao sair da tela
+  //   super.dispose();
+  // }
 }
