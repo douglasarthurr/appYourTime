@@ -4,13 +4,6 @@ void main() {
   runApp(const MyApp());
 }
 
-class Tag {
-  final String text;
-  final Color color;
-
-  Tag(this.text, this.color);
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -40,9 +33,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final int _counter = 1440;
-
   TextEditingController value = TextEditingController();
-  TextEditingController newValue = TextEditingController();
+  TextEditingController description = TextEditingController();
+
+  bool trabalhoChecked = false;
+  bool sonoChecked = false;
+  bool lazerChecked = false;
+  bool estudoChecked = false;
+
+  String? selectedTag;
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   const SizedBox(height: 10.0),
                   ElevatedButton(
-                    onPressed: () {
-            
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orangeAccent,
                       shape: RoundedRectangleBorder(
@@ -107,13 +104,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const SizedBox(height: 50.0),
                   Container(
-                      width: 350,
-                      height: 300, 
-                      decoration: BoxDecoration(
-                        color: Colors.orange,
-                        borderRadius: BorderRadius.circular(
-                            10),
-                      ),
+                    width: 400,
+                    height: 340,
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: Column(
                       children: <Widget>[
                         Padding(
@@ -121,7 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: SizedBox(
                             width: 250.0,
                             child: TextField(
-                              keyboardType: const TextInputType.numberWithOptions(),
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(),
                               controller: value,
                               decoration: const InputDecoration(
                                 labelText: 'Crc',
@@ -134,9 +131,130 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 15.0),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0, top: 12.0),
+                          child: SizedBox(
+                            width: 250.0,
+                            child: TextField(
+                              controller: description, // Novo controller
+                              decoration: const InputDecoration(
+                                hintText: 'Descrição do Pix',
+                                hintStyle: TextStyle(
+                                    color: Colors.black, fontSize: 12.0),
+                                border: UnderlineInputBorder(),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20.0),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              const Text(
+                                'Atividades:',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                              ListTile(
+                                title: const Text(
+                                  'Trabalho',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                leading: Radio<String>(
+                                  value: 'trabalho',
+                                  groupValue: selectedTag,
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      selectedTag = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                              ListTile(
+                                title: const Text(
+                                  'Sono',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                leading: Radio<String>(
+                                  value: 'sono',
+                                  groupValue: selectedTag,
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      selectedTag = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                              ListTile(
+                                title: const Text(
+                                  'Lazer',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                leading: Radio<String>(
+                                  value: 'lazer',
+                                  groupValue: selectedTag,
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      selectedTag = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                              ListTile(
+                                title: const Text(
+                                  'Estudo',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                leading: Radio<String>(
+                                  value: 'estudo',
+                                  groupValue: selectedTag,
+                                  onChanged: (String? value) {
+                                    setState(() {
+                                      selectedTag = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
+                  const SizedBox(height: 50.0),
+                  SizedBox(
+                    width: 300.0,
+                    height: 35.0,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      child: const Text(
+                        'Enviar',
+                        style: TextStyle(fontSize: 14.0, color: Colors.white),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ],
