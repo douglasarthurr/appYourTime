@@ -54,7 +54,7 @@ class _MyHomePageState extends State<graphicPage> {
                     PieChartData(
                       sections: [
                         PieChartSectionData(
-                          color: Color.fromARGB(255, 109, 2, 109),
+                          color: const Color.fromARGB(255, 109, 2, 109),
                           value: 45,
                           title: '45%',
                           radius: 60,
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<graphicPage> {
                           ),
                         ),
                         PieChartSectionData(
-                          color: Color.fromARGB(255, 231, 21, 21),
+                          color: const Color.fromARGB(255, 231, 21, 21),
                           value: 5,
                           title: '5%',
                           radius: 60,
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<graphicPage> {
                   Container(
                     width: 12.0,
                     height: 12.0,
-                    color: Color.fromARGB(255, 231, 21, 21),
+                    color: const Color.fromARGB(255, 231, 21, 21),
                   ),
                   const Text(
                     'Lazer',
@@ -145,7 +145,7 @@ class _MyHomePageState extends State<graphicPage> {
                   Container(
                     width: 12.0,
                     height: 12.0,
-                    color: Color.fromARGB(255, 109, 2, 109),
+                    color: const Color.fromARGB(255, 109, 2, 109),
                   ),
                   const Text(
                     'Sono',
