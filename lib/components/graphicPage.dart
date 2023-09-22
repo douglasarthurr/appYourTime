@@ -1,26 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class graphicPage extends StatefulWidget {
+  const graphicPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<graphicPage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<graphicPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: Image.asset('assets/images/crc.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        title: Text(widget.title),
+        title: const Row(
+          children: [
+            Text(
+              'Gráfico',
+              style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -34,10 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Gráfico',
-                style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
-              ),
               const SizedBox(height: 20), // Espaço entre o texto e o Container
               Container(
                 width: 561, // Largura desejada

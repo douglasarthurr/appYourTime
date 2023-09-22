@@ -19,14 +19,23 @@ class _MyHomePageState extends State<pixPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Image.asset('assets/images/crc.png'),
-          ),
-          backgroundColor: Colors.white,
-          title: Text(widget.title),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        title: const Row(
+          children: [
+            Text(
+              'Pix',
+              style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
         body: SingleChildScrollView(
           child: Container(
             decoration: const BoxDecoration(

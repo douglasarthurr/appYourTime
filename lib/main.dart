@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:yourtime/components/graphicPage.dart';
 import 'package:yourtime/components/pixPage.dart';
-
 
 void main() {
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -36,21 +34,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 1440;
+  final int _counter = 1440;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
-          padding: EdgeInsets.only(left: 16.0),
+          padding: const EdgeInsets.only(left: 16.0),
           child: Image.asset('assets/images/crc.png'),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         title: Text(widget.title),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -58,37 +56,37 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
+          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
                 'CRC: $_counter',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 40.0,
                 ),
               ),
-              Divider(
+              const Divider(
                 color: Colors.black,
                 thickness: 2.0,
               ),
-              SizedBox(height: 2.0),
+              const SizedBox(height: 2.0),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   ElevatedButton(
                     onPressed: () {
                       // Lógica do terceiro botão
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.orangeAccent,
+                      backgroundColor: Colors.orangeAccent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      minimumSize: Size(100, 30),
+                      minimumSize: const Size(100, 30),
                     ),
-                    child: Column(
+                    child: const Column(
                       children: <Widget>[
                         Text(
                           'Ver Extrato',
@@ -99,14 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => pixPage(
-                                    title: "opa",
+                              builder: (context) => const pixPage(
+                                    title: "YourTime",
                                   )));
                     },
                     child: Container(
@@ -116,32 +114,35 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.orange,
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      child: Row(
-                        children: <Widget>[
-                          Image.asset(
-                            'assets/images/pix.png',
-                            height: 30.0,
-                            width: 30.0,
-                          ),
-                          SizedBox(width: 8.0),
-                          Text(
-                            'Fazer PIX',
-                            style: TextStyle(
-                              color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              'assets/images/pix.png',
+                              height: 30.0,
+                              width: 30.0,
                             ),
-                          ),
-                        ],
-                      ),
+                            const SizedBox(width: 8.0),
+                            const Text(
+                              'Fazer PIX',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => pixPage(
-                                    title: "opa",
+                              builder: (context) => const graphicPage(
+                                    title: "YourTime",
                                   )));
                     },
                     child: Container(
@@ -151,22 +152,25 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.orange,
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      child: Row(
-                        children: <Widget>[
-                          Image.asset(
-                            'assets/images/grafico.png',
-                            height: 30.0,
-                            width: 30.0,
-                          ),
-                          SizedBox(width: 8.0),
-                          Text(
-                            'Ver Gráfico',
-                            style: TextStyle(
-                              color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10.0,),
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              'assets/images/grafico.png',
+                              height: 30.0,
+                              width: 30.0,
                             ),
-                          ),
-                        ],
-                      ),
+                            const SizedBox(width: 8.0),
+                            const Text(
+                              'Ver Gráfico',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ),
                   )
                 ],
@@ -178,4 +182,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
