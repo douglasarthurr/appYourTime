@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:yourtime/components/MyApp.dart';
-
+import 'package:yourtime/components/pixPage.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,6 +17,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 226, 171, 53)),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'YourTime'),
     );
   }
@@ -99,63 +97,75 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   SizedBox(height: 20.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Lógica do primeiro botão
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => pixPage(
+                                    title: "opa",
+                                  )));
                     },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.orange,
-                      shape: RoundedRectangleBorder(
+                    child: Container(
+                      width: 400,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.orange,
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      minimumSize: Size(400, 60),
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/images/pix.png',
-                          height: 30.0,
-                          width: 30.0,
-                        ),
-                        SizedBox(width: 8.0),
-                        Text(
-                          'Fazer PIX',
-                          style: TextStyle(
-                            color: Colors.white,
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/pix.png',
+                            height: 30.0,
+                            width: 30.0,
                           ),
-                        ),
-                      ],
+                          SizedBox(width: 8.0),
+                          Text(
+                            'Fazer PIX',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: 10.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Lógica do terceiro botão
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => pixPage(
+                                    title: "opa",
+                                  )));
                     },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.orange,
-                      shape: RoundedRectangleBorder(
+                    child: Container(
+                      width: 400,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.orange,
                         borderRadius: BorderRadius.circular(5.0),
                       ),
-                      minimumSize: Size(400, 60),
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/images/grafico.png',
-                          height: 30.0,
-                          width: 30.0,
-                        ),
-                        SizedBox(width: 8.0),
-                        Text(
-                          'Ver Gráfico',
-                          style: TextStyle(
-                            color: Colors.white,
+                      child: Row(
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/images/grafico.png',
+                            height: 30.0,
+                            width: 30.0,
                           ),
-                        ),
-                      ],
+                          SizedBox(width: 8.0),
+                          Text(
+                            'Ver Gráfico',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ],
@@ -165,4 +175,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
