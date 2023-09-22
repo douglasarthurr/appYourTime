@@ -28,13 +28,32 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_native_splash: ^2.3.2
+
   flutter:
     sdk: flutter
+
+flutter_native_splash:
+  flutter_launcher_icons: ^0.9.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   fl_chart: ^0.63.0
+
+  flutter_native_splash:
+    color: "#CC6F00"
+    image: assets/images/logo_principal.png
+    android: true
+    ios: true
+
+  flutter_icons:
+    image_path: "assets/images/icon_principal2.png"
+    ios: true
+    remove_alpha_ios: true
+    android: "launcher_icon"
+    adaptive_icon_background: "#CC6F00"
+    adaptive_icon_foreground: "assets/images/icon_principal2.png"
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +83,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/crc.png
+    - assets/images/grafico.png
+    - assets/images/pix.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
